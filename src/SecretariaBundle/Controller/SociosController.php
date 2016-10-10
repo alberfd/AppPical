@@ -82,25 +82,7 @@ class SociosController extends Controller
     	
     	
     	
-    	/*
-    	$em = $this->getDoctrine()->getManager();
-    	$escalas[0] = $em->getRepository('SecretariaBundle:Escala')->find(3);
     	
-    	$socio = new Socio();
-    	$socio->setNombre($request->request->get("nombre"));
-    	$socio->setApellidos($request->request->get("apellidos"));
-    	$socio->setEscalas($escalas);
-    	
-    	$em->persist($socio);
-    	$em->flush();
-    	
-    	$params = array('params'=>array('insertado' =>123));
-    	
-    	$data = array('tipoMensaje' => 'success', 'mensaje' => bin2hex("Socio insertado correctamente"));
-    	return $this->redirect($this->generateUrl('pical_secretaria_socios_index', $data));
-    	
-    	return $this->redirect($this->generateUrl('pical_secretaria_socios_index', array('params' => 123)), 301);
-    	*/
     	
     }
     

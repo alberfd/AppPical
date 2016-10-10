@@ -424,3 +424,11 @@ be9ed9,127.0.0.1,GET,http://127.0.0.1:8000/app_dev.php/socios/index,1476133200,0
 86ce40,127.0.0.1,GET,http://127.0.0.1:8000/app_dev.php/socios/index,1476133422,,200
 ead05d,127.0.0.1,GET,http://127.0.0.1:8000/app_dev.php/socio/form_add,1476133426,,200
 e2a676,127.0.0.1,GET,http://127.0.0.1:8000/app_dev.php/socios/index,1476133433,,200
+694b04,127.0.0.1,GET,http://127.0.0.1/symfony/web/app_dev.php/socios/index,1476135591,,200
+662d20,127.0.0.1,GET,http://127.0.0.1/symfony/web/app_dev.php/socios/index,1476135731,,200
+40d355,127.0.0.1,GET,http://127.0.0.1/symfony/web/app_dev.php/socios/index,1476135735,,200
+a6d3ae,127.0.0.1,GET,http://127.0.0.1/app_dev.php/,1476136544,,200
+cd04f3,127.0.0.1,GET,http://127.0.0.1/app_dev.php/socios/index,1476136555,,200
+ec9f15,127.0.0.1,GET,http://127.0.0.1/app_dev.php/socio/form_add,1476136726,,200
+573cec,127.0.0.1,POST,http://127.0.0.1/app_dev.php/socio/add,1476136755,,200
+537df3,127.0.0.1,GET,http://127.0.0.1/app_dev.php/socios/index,1476136821,,200
