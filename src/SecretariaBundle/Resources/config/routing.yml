@@ -1,0 +1,39 @@
+pical_secretaria_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SecretariaBundle:Default:index }
+    
+pical_secretaria_socios_index:
+    pattern:  /socios/index
+    defaults: { _controller: SecretariaBundle:Socios:index }
+
+
+pical_secretaria_socio_edit:
+    pattern:  /socio/{idSocio}
+    defaults: { _controller: SecretariaBundle:Socios:edit }
+    requirements:
+        idSocio: \d+
+        
+pical_secretaria_socio_view:
+    pattern:  /socio/view/{idSocio}
+    defaults: { _controller: SecretariaBundle:Socios:view }
+    requirements:
+        idSocio: \d+
+        
+pical_secretaria_socio_delete:
+    pattern:  /socio/delete/{idSocio}
+    defaults: { _controller: SecretariaBundle:Socios:delete }
+    requirements:
+        idSocio: \d+
+        
+pical_secretaria_socio_form_add:
+    pattern:  /socio/form_add
+    defaults: { _controller: SecretariaBundle:Socios:form_add }
+    requirements:
+        idSocio: \d+
+
+pical_secretaria_socio_add:
+    pattern:  /socio/add
+    defaults: { _controller: SecretariaBundle:Socios:add }
+    requirements:
+        idSocio: \d+
+    

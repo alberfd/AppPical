@@ -1,0 +1,42 @@
+{% extends 'SecretariaBundle:Default:layout.html.twig' %}
+
+{% block body %}
+<div class="row">
+	{% if data.tipoMensaje is defined and data.tipoMensaje == 'success' %} 
+      <div class="alert alert-success col-md-12" role="alert">
+        {{ data.mensaje }}
+      </div>
+    {% endif %}
+    
+    {% if app.request.get('tipoMensaje') is defined and app.request.get('tipoMensaje') == 'error' %} 
+    <div class="alert alert-danger" role="alert">
+        {{ app.request.get('mensaje')|raw }}
+      </div>
+    {% endif %}
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for socio in socios %}
+              <tr>
+              	<td>{{ socio.id }}</td>
+                <td>{{ socio.nombre }}</td>
+                <td>{{ socio.apellidos }}</td>
+                <td>
+                    <a href="{{ path('pical_secretaria_socio_view', {'idSocio': socio.id}) }}" class = "btn btn-sm btn-info">Ver</a>
+                    <a href="app_dev.php/../../socio/delete/{{ socio.id }}" class = "btn btn-sm btn-danger">Eliminar</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>       
+ </div>
+ {% endblock %}

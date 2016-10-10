@@ -1,0 +1,91 @@
+
+ 
+ 
+ 
+ 
+ 
+ {% extends 'SecretariaBundle:Default:layout.html.twig' %}
+{% block body %}
+<div class="row">
+        <div class="col-md-6">
+        
+        {{ form_start(form, { 'attr' : { 'novalidate': 'novalidate'} }) }}
+        
+        
+        	  <div class="form-group">
+			    {{ form_label(form.nombre) }}
+			    {{ form_widget(form.nombre, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.nombre) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.apellidos) }}
+			    {{ form_widget(form.apellidos, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.apellidos) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.email) }}
+			    {{ form_widget(form.email, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.email) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.direccion) }}
+			    {{ form_widget(form.direccion, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.direccion) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.escalas) }}
+			    {{ form_widget(form.escalas, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.escalas) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.poblacion) }}
+			    {{ form_widget(form.poblacion, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.poblacion) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.provincia) }}
+			    {{ form_widget(form.provincia, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.provincia) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.cp) }}
+			    {{ form_widget(form.cp, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.cp) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.numero_cuenta) }}
+			    {{ form_widget(form.numero_cuenta, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.numero_cuenta) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.fecha_nacimiento) }}
+			    {{ form_widget(form.fecha_nacimiento, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.fecha_nacimiento) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.tipo_socio) }}
+			    {{ form_widget(form.tipo_socio, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.tipo_socio) }} </span>
+			  </div>
+			  
+			  <div class="form-group">
+			    {{ form_label(form.alta) }}
+			    {{ form_widget(form.alta, { 'attr' : {'class' : 'form-control' } } ) }}
+			    <span class="text-danger"> {{ form_errors(form.alta) }} </span>
+			  </div>
+        
+        
+        {{ form_end(form) }}
+        </div>       
+ </div>
+ {% endblock %}
