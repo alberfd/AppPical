@@ -28,7 +28,7 @@ class SocioType extends AbstractType
             ->add('fecha_nacimiento', 'birthday')  
             ->add('tipo_socio', 'choice', array('choices' => array('SOCIO' => 'Socio',
             	'SOCIO_NUMERO' => 'Socio de numero'), 'placeholder' => 'Tipo de socio'))
-            ->add('alta', CheckboxType::class ,array('data' => true))
+            ->add('alta', CheckboxType::class )
             ->add('escalas')
             ->add('Guardar', 'submit')
         ;

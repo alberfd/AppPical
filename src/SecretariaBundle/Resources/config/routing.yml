@@ -8,8 +8,14 @@ pical_secretaria_socios_index:
 
 
 pical_secretaria_socio_edit:
-    pattern:  /socio/{idSocio}
+    pattern:  /socio/edit/{idSocio}
     defaults: { _controller: SecretariaBundle:Socios:edit }
+    requirements:
+        idSocio: \d+
+        
+pical_secretaria_socio_form_edit:
+    pattern:  /socio/form_edit/{idSocio}
+    defaults: { _controller: SecretariaBundle:Socios:form_edit }
     requirements:
         idSocio: \d+
         

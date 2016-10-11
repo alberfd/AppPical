@@ -25,8 +25,50 @@ class SociosController extends Controller
         
     }
     
-    public function editAction($idSocio){
-    	return new Response("Editando al socio " . $idSocio);
+    public function form_editAction($idSocio){
+    	
+    	$em = $this->getDoctrine()->getManager();
+    	
+    	$socio = $em->getRepository('SecretariaBundle:Socio')->find($idSocio);
+    	
+    	if($socio == null){
+    		throw $this->createNotFoundException("Socio no encontrado");
+    	}
+    	
+    	$form = $this->createEditForm($socio);
+    	
+    	return $this->render('SecretariaBundle:Default:edit.html.twig', array('socio' => $socio, 'form' => $form->createView()));
+    }
+    
+    private function createEditForm(Socio $socio){
+    	$form = $this->createForm(new SocioType(), $socio, array('action' => $this->generateUrl('pical_secretaria_socio_edit',
+    			array('idSocio' => $socio->getId()))));
+    	
+    	return $form;
+    }
+    
+    public function editAction($idSocio, Request $request){
+    	
+    	$em = $this->getDoctrine()->getManager();
+    	
+    	$socio = $em->getRepository('SecretariaBundle:Socio')->find($idSocio);
+    	
+    	if($socio == null){
+    		throw $this->createNotFoundException("Socio no encontrado");
+    	}
+    	
+    	$form = $this->createEditForm($socio);
+    	
+    	$form->handleRequest($request);
+    	
+    	if($form->isSubmitted() && $form->isValid()){
+    		$em->flush();
+    		
+    		return $this->redirectToRoute('pical_secretaria_socios_index');
+    	}
+    	
+    	return $this->render('SecretariaBundle:Default:edit.html.twig', array('socio' => $socio, 'form' => $form->createView()));
+    	
     }
     
     public function viewAction($idSocio){
