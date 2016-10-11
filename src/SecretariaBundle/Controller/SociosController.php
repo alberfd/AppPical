@@ -9,6 +9,7 @@ use SecretariaBundle\Entity\Socio;
 use SecretariaBundle\Form\SocioType;
 
 
+
 class SociosController extends Controller
 {
     public function indexAction()
