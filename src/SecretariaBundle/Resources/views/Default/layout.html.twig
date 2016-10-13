@@ -2,10 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<title>Administración Pical</title>
 	<link rel = "stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel = "stylesheet" href="/public/css/dataTables.bootstrap.min.css" />
 	<script src="/public/js/jquery-3.1.1.min.js"></script>
     <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/jquery.dataTables.min.js"></script>
+    <script src="/public/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#tablaSocios').dataTable({bFilter: false, bInfo: false});
+        } );
+    </script>
     
     
 </head>
