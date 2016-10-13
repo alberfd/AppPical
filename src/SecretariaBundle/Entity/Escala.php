@@ -3,6 +3,8 @@
 namespace SecretariaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Escala
@@ -25,12 +27,22 @@ class Escala
      * @var string
      *
      * @ORM\Column(name="nombre_escala", type="string", length=100)
+     * @Assert\NotBlank
      */
     private $nombre_escala;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="abreviatura", type="string", length=100)
+     * 
+     * @Assert\NotBlank
+     */
+    private $abreviatura;
 
     /**
      * 
-     * @ORM\ManyToMany(targetEntity="Socio", mappedBy = "escalas", cascade={"persist"}, fetch="EAGER")
+     * @ORM\ManyToMany(targetEntity="Socio", mappedBy="escalas", cascade={"persist"}, fetch="EXTRA_LAZY")
      * 
      */
     private $socios;
@@ -60,13 +72,37 @@ class Escala
     }
 
     /**
-     * Get nombre_escala
+     * Get abreviatura
      *
      * @return string 
      */
+    public function getAbreviatura()
+    {
+        return $this->abreviatura;
+    }
+    
+    
+    /**
+     * Set abreviatura
+     *
+     * @param string $abreviatura
+     * @return Escala
+     */
+    public function setAbreviatura($abreviatura)
+    {
+    	$this->abreviatura = $abreviatura;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get nombre_escala
+     *
+     * @return string
+     */
     public function getNombreEscala()
     {
-        return $this->nombre_escala;
+    	return $this->nombre_escala;
     }
 
     /**

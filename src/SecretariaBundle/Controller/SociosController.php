@@ -7,22 +7,58 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use SecretariaBundle\Entity\Socio;
 use SecretariaBundle\Form\SocioType;
+use SecretariaBundle\Entity\FiltroSocio;
+use SecretariaBundle\Form\FiltroSocioType;
 
 
 
 class SociosController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+    	$filtroSocio = new FiltroSocio();
+    	$form = $this->createFilterForm($filtroSocio);
+    	$form->handleRequest($request);
     	
-        $em = $this->getDoctrine()->getManager();
+    	$em = $this->getDoctrine()->getManager();
     	
-    	$socios = $em->getRepository('SecretariaBundle:Socio')->findAll();
-    	
+    	if($form->isSubmitted()){
+    		$qb = $em->createQueryBuilder();
+    		
+    		$params['nombre'] =  '%'.$filtroSocio->getNombre().'%';
+    		$params['apellidos'] = '%'.$filtroSocio->getApellidos().'%';
+    		$params['alta']	= $filtroSocio->getAlta();
+    		if($filtroSocio->getEscalas() != null)
+    			$params['escala'] = $filtroSocio->getEscalas()->getId();
+    		
+    		$q = $qb->select('s')
+    		->from('SecretariaBundle:Socio' , 's');
+    		if($filtroSocio->getEscalas() != null)
+    			$q->innerJoin('s.escalas', 'e','WITH', 'e = :escala');
+    		$q->where('s.nombre like :nombre')
+    		->andWhere('s.apellidos like :apellidos')
+    		->andWhere('s.alta = :alta')
+    		->setParameters($params);
+
+    		
+    		 
+    		$query = $qb->getQuery();
+    		 
+    		$socios = $query->getResult();
+    	}else{
+    		$socios = $em->getRepository('SecretariaBundle:Socio')->findAll(array('alta' => 1)); 
+    	}    	
     	    	            
-    	return $this->render('SecretariaBundle:Default:index.html.twig', array('socios' => $socios));
+    	return $this->render('SecretariaBundle:Default:index.html.twig', array('socios' => $socios, 'form' => $form->createView()));
         
         
+    }
+    
+    private function createFilterForm(FiltroSocio $filtroSocio){
+    	$form = $this->createForm(new FiltroSocioType(), $filtroSocio, array('action' => $this->generateUrl('pical_secretaria_socios_index'
+    			)));
+    	
+    	return $form;
     }
     
     public function form_editAction($idSocio){

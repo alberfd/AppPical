@@ -42,4 +42,16 @@ pical_secretaria_socio_add:
     defaults: { _controller: SecretariaBundle:Socios:add }
     requirements:
         idSocio: \d+
+        
+pical_secretaria_escala_form_add:
+    pattern:  /escala/form_add
+    defaults: { _controller: SecretariaBundle:Escalas:form_add }
+    requirements:
+        idSocio: \d+
+        
+pical_secretaria_escala_add:
+    pattern:  /escala/add
+    defaults: { _controller: SecretariaBundle:Escalas:add }
+    requirements:
+        idSocio: \d+
     

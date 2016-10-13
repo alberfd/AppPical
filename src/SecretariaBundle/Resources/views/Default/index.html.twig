@@ -13,6 +13,46 @@
         {{ app.request.get('mensaje')|raw }}
       </div>
     {% endif %}
+    
+    
+    
+    
+
+    	<div class="col-md-12">
+    	
+    	
+        	{{ form_start(form, { 'attr' : { 'novalidate': 'novalidate', 'class' : 'form-inline', 'role' : 'form'} }) }}
+        
+        
+        	  <div class="form-group">
+        	  	{{ form_label(form.nombre) }}
+        	  	{{ form_widget(form.nombre, { 'attr' : {'class' : 'form-control' } }) }}
+        	  	<span class="text-danger"> {{ form_errors(form.nombre) }} </span>
+        	  </div>
+        	  
+        	  <div class="form-group">
+        	  	{{ form_label(form.apellidos) }}
+        	  	{{ form_widget(form.apellidos, { 'attr' : {'class' : 'form-control' } }) }}
+        	  	<span class="text-danger"> {{ form_errors(form.apellidos) }} </span>
+        	  </div>
+        	  
+        	  <div class="form-group">
+        	  	{{ form_label(form.escalas) }}
+        	  	{{ form_widget(form.escalas, { 'attr' : {'class' : 'form-control' } }) }}
+        	  	<span class="text-danger"> {{ form_errors(form.escalas) }} </span>
+        	  </div>
+        	  
+        	  <div class="form-group">
+        	  	{{ form_label(form.alta) }}
+        	  	{{ form_widget(form.alta, { 'attr' : {'class' : 'form-control' } }) }}
+        	  	<span class="text-danger"> {{ form_errors(form.alta) }} </span>
+        	  </div>
+        	  
+        	  <div class="form-group">
+        	  	{{ form_end(form) }}
+        	  </div>
+
+        </div>       
         <div class="col-md-12">
           <table class="table">
             <thead>

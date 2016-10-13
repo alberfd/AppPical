@@ -346,4 +346,8 @@ class Socio
     	$resta = $fechaActual->diff($this->fecha_nacimiento);
     	return $resta->y <= self::MAX_EDAD_INFANTIL;
     }
+    
+    public function __toString(){
+    	return $this->nombre  ." ". $this->apellidos;
+    }
 }
