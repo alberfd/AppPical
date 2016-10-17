@@ -3,9 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
-	<link rel = "stylesheet" href="/public/css/bootstrap.min.css" />
-	<script src="/public/js/jquery-3.1.1.min.js"></script>
-    <script src="/public/js/bootstrap.min.js"></script>
+
+	{% block stylesheets %}
+		<link rel = "stylesheet" href="/public/css/bootstrap.min.css" />
+	{% endblock %}
+	
     
     
 </head>
@@ -48,16 +50,22 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-              <li><a href="../navbar-static-top/">Static top</a></li>
-              <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+             {% if app.user.username is defined %}
+              <li ><a href="{{ path('pical_usuario_logout') }}">Cerrar sesion <span class="sr-only">(current)</span></a></li>
+              <li class="active"><a href="../navbar-static-top/">Autenticado como {{ app.user.username }}</a></li>
+             {% endif %} 
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
       
     <div class="container">
-	{% block body %}{% endblock %}
+		{% block body %}{% endblock %}
 	</div>
+	
+	{% block javascripts %}
+		<script src="/public/js/jquery-3.1.1.min.js"></script>
+    	<script src="/public/js/bootstrap.min.js"></script>
+    {% endblock %}
 </body>
 </html>

@@ -1,0 +1,46 @@
+{% extends 'SecretariaBundle:Default:layout.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	
+	<link rel="stylesheet" href="{{ asset('public/css/login.css') }}">
+	
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<section id="content">
+			<form action="{{ path('pical_usuario_login') }}" method="post">
+				<h1>Login Form</h1>
+				
+				{% if error %}
+				
+				
+					<div class="text-danger">
+						<p>
+							<strong>
+								{{ error.messageKey }}
+							</strong>
+					</div>
+				
+				{% endif %}
+				<div>
+					<input type="text" placeholder="Nombre de Usuario" required="" id="username" name = "_nombre_usuario" value = "{{ ultimoNombreUsuario }}" />
+				</div>
+				<div>
+					<input type="password" placeholder="Password" required="" id="password" name = "_password" />
+					<input type = "hidden" name = "_target_path" value="pical_usuario_homepage" />
+				</div>
+				<div>
+					<input type="submit" value="Log in" />
+				</div>
+			</form><!-- form -->
+			
+		</section><!-- content -->
+	</div><!-- container -->
+{% endblock %} 
+	{% block javascripts %}
+		{{ parent() }}
+    
+        <script src="{{ asset('public/js/login.js') }}"></script>
+	{% endblock %}

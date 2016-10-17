@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Filtro Socio
- * @ORM\Entity
+ * 
  */
 class FiltroSocio
 {
