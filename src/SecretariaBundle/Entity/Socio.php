@@ -6,6 +6,7 @@ use JMS\SecurityExtraBundle\Security\Util\String;
 use \DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Socio
@@ -99,10 +100,20 @@ class Socio
     /**
      * @var String
      * @ORM\Column(name="url_foto", type="string", length=200, nullable=true)
-     * @Assert\Date
+     * 
      */
     private $url_foto;
 
+    /**
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 2000,
+     *     minHeight = 200,
+     *     maxHeight = 2000
+     * )
+     */
+     private $foto;
+     
     /**
      * 
      * @ORM\ManyToMany(targetEntity="Escala", inversedBy="socios", cascade={"persist"}, fetch="EXTRA_LAZY")
@@ -349,5 +360,88 @@ class Socio
     
     public function __toString(){
     	return $this->nombre  ." ". $this->apellidos;
+    }
+    
+    public function getUrlFoto(){
+        return $this->url_foto;
+    }
+    
+    public function setUrlFoto($urlFoto){
+        $this->url_foto = $urlFoto;
+        
+        return $this;
+    }
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->url_foto
+            ? null
+            : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->url_foto
+            ? null
+            : $this->getUploadDir().'/'.$this->url_foto;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // la ruta absoluta del directorio donde se deben
+        // guardar los archivos cargados
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // se deshace del __DIR__ para no meter la pata
+        // al mostrar el documento/imagen cargada en la vista.
+        return 'uploads/documents';
+    }
+    
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $foto
+     */
+    public function setFoto(UploadedFile $foto = null)
+    {
+        $this->foto = $foto;
+    }
+
+    /**
+     * Get foto.
+     *
+     * @return UploadedFile
+     */
+    public function getFoto()
+    {
+        return $this->foto;
+    }
+    
+    public function subirFoto(){
+        // the file property can be empty if the field is not required
+        if (null === $this->getFoto()) {
+            return;
+        }
+    
+        // aquí usa el nombre de archivo original pero lo debes
+        // sanear al menos para evitar cualquier problema de seguridad
+    
+        // move takes the target directory and then the
+        // target filename to move to
+        echo $this->getUploadRootDir();
+        $this->getFoto()->move(
+            $this->getUploadRootDir(),
+            $this->getFoto()->getClientOriginalName()
+        );
+    
+        // set the path property to the filename where you've saved the file
+        $this->url_foto = $this->getFoto()->getClientOriginalName();
+    
+        // limpia la propiedad «file» ya que no la necesitas más
+        $this->foto = null;
+
     }
 }

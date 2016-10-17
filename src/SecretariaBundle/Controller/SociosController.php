@@ -98,6 +98,7 @@ class SociosController extends Controller
     	$form->handleRequest($request);
     	
     	if($form->isSubmitted() && $form->isValid()){
+            $socio->subirFoto();
     		$em->flush();
     		
     		return $this->redirectToRoute('pical_secretaria_socios_index');
@@ -150,10 +151,12 @@ class SociosController extends Controller
     	if($form->isValid()){
     		$em = $this->getDoctrine()->getManager();
     		
+            $socio->subirFoto();
+            
     		$em->persist($socio);
     		$em->flush();
-    	
-    		return $this->redirectToRoute('pical_secretaria_socios_index');
+            
+            return $this->redirectToRoute('pical_secretaria_socios_index');
     	}
     	
     	return $this->render('SecretariaBundle:Default:addSocio.html.twig', array('form' => $form->createView()));

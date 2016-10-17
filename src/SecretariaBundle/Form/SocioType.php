@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class SocioType extends AbstractType
 {
@@ -20,6 +21,7 @@ class SocioType extends AbstractType
             ->add('nombre', 'text')
             ->add('apellidos', 'text')
             ->add('email', 'email')
+            ->add('foto', FileType::class, array('data_class' => null))
             ->add('direccion')
             ->add('poblacion')
             ->add('provincia')
