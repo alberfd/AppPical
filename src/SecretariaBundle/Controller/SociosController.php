@@ -14,6 +14,9 @@ use SecretariaBundle\Form\FiltroSocioType;
 
 class SociosController extends Controller
 {
+	
+	
+	
     public function indexAction(Request $request)
     {
     	$filtroSocio = new FiltroSocio();

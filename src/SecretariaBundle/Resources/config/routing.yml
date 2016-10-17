@@ -54,4 +54,19 @@ pical_secretaria_escala_add:
     defaults: { _controller: SecretariaBundle:Escalas:add }
     requirements:
         idSocio: \d+
+
+pical_usuario_homepage:
+    pattern:  /
+    defaults: { _controller: SecretariaBundle:Seguridad:home }
     
+pical_usuario_form_login:
+    pattern:  /form_login
+    defaults: { _controller: SecretariaBundle:Seguridad:form_login }
+    
+pical_usuario_login:
+    pattern:  /login
+    defaults: { _controller: SecretariaBundle:Seguridad:login }
+    
+pical_usuario_logout:
+    pattern:  /logout
+    defaults: { _controller: SecretariaBundle:Seguridad:logout }
