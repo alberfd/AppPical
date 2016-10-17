@@ -3,15 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Administración Pical</title>
-    <script src="/public/js/jquery.dataTables.min.js"></script>
-    <script src="/public/js/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#tablaSocios').dataTable({bFilter: false, bInfo: false});
-        } );
-    </script>
-    
-    
+	<link href="/public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="/public/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">    
 </head>
 
 <body>
@@ -69,6 +62,13 @@
 	{% block javascripts %}
 		<script src="/public/js/jquery-3.1.1.min.js"></script>
     	<script src="/public/js/bootstrap.min.js"></script>
+    	<script src="/public/js/jquery.dataTables.min.js"></script>
+    	<script src="/public/js/dataTables.bootstrap.min.js"></script>
+    	<script type="text/javascript">
+        $(document).ready(function() {
+            $('#tablaSocios').dataTable({bFilter: false, bInfo: true});
+        } );
+    </script>
     {% endblock %}
 </body>
 </html>
