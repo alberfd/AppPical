@@ -2,7 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<<<<<<< HEAD
+<title>Documento sin título</title>
+
+	{% block stylesheets %}
+		<link rel = "stylesheet" href="/public/css/bootstrap.min.css" />
+	{% endblock %}
+	
+=======
 <title>Administración Pical</title>
+	<link rel = "stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel = "stylesheet" href="/public/css/dataTables.bootstrap.min.css" />
+	<script src="/public/js/jquery-3.1.1.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
     <script src="/public/js/jquery.dataTables.min.js"></script>
     <script src="/public/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
@@ -10,6 +22,7 @@
             $('#tablaSocios').dataTable({bFilter: false, bInfo: false});
         } );
     </script>
+>>>>>>> d73451f5381165b3596ceab8a7deefc901ea6e46
     
     
 </head>
@@ -52,7 +65,6 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-
              {% if app.user.username is defined %}
               <li ><a href="{{ path('pical_usuario_logout') }}">Cerrar sesion <span class="sr-only">(current)</span></a></li>
               <li class="active"><a href="../navbar-static-top/">Autenticado como {{ app.user.username }}</a></li>
@@ -63,7 +75,7 @@
       </nav>
       
     <div class="container">
-	{% block body %}{% endblock %}
+		{% block body %}{% endblock %}
 	</div>
 	
 	{% block javascripts %}
