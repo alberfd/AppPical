@@ -41,6 +41,11 @@ class EscalasController extends Controller
     		echo "aa2" . $escala->getSocios()[0];
     		$em->persist($escala);
     		$em->flush();
+    		
+    		$this->addFlash(
+    				'success',
+    				'Escala creada correctamente'
+    		);
     		 
     		return $this->redirectToRoute('pical_secretaria_socios_index');
     	}

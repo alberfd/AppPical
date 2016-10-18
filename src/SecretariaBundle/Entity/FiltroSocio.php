@@ -1,11 +1,7 @@
 <?php
 namespace SecretariaBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use JMS\SecurityExtraBundle\Security\Util\String;
-use \DateTime;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Filtro Socio

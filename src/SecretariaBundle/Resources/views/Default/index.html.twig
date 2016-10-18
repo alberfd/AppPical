@@ -2,21 +2,21 @@
 
 {% block body %}
 <div class="row">
-	{% if data.tipoMensaje is defined and data.tipoMensaje == 'success' %} 
-      <div class="alert alert-success col-md-12" role="alert">
-        {{ data.mensaje }}
-      </div>
-    {% endif %}
+	{% for mensajeFlash in app.session.flashbag.get('success') %} 
+      <div class="alert alert-success" role="alert">
+		<div class="container"> {{ mensajeFlash }} </div>
+		</div>
+    {% endfor %}
     
-    {% if app.request.get('tipoMensaje') is defined and app.request.get('tipoMensaje') == 'error' %} 
-    <div class="alert alert-danger" role="alert">
-        {{ app.request.get('mensaje')|raw }}
-      </div>
-    {% endif %}
-
+    {% for mensajeFlash in app.session.flashbag.get('error') %} 
+      <div class="alert alert-danger" role="alert">
+		<div class="container"> {{ mensajeFlash }} </div>
+		</div>
+    {% endfor %}
+	
     	<div class="col-md-12">
     	
-    	
+    		<h2>Socios</h2>
         	{{ form_start(form, { 'attr' : { 'novalidate': 'novalidate', 'class' : 'form-inline', 'role' : 'form'} }) }}
         
         

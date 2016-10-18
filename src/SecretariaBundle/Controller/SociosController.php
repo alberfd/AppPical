@@ -104,6 +104,11 @@ class SociosController extends Controller
             $socio->subirFoto();
     		$em->flush();
     		
+    		$this->addFlash(
+    				'success',
+    				'Socio modificado correctamente'
+    		);
+    		
     		return $this->redirectToRoute('pical_secretaria_socios_index');
     	}
     	
@@ -154,16 +159,17 @@ class SociosController extends Controller
             
     		$em->persist($socio);
     		$em->flush();
+    		
+    		$this->addFlash(
+    				'success',
+    				'Socio insertado correctamente'
+    		);
             
             return $this->redirectToRoute('pical_secretaria_socios_index');
     	}
     	
     	return $this->render('SecretariaBundle:Default:addSocio.html.twig', array('form' => $form->createView()));
-    	
-    	
-    	
-    	
-    	
+    		
     	
     }
     
@@ -176,15 +182,22 @@ class SociosController extends Controller
     	if($socio != null){
     		$em->remove($socio);
     		$em->flush();
-    		$data = array('tipoMensaje' => 'success', 'mensaje' => bin2hex("Socio Eliminado correctamente"));
+    		
+    		$this->addFlash(
+    				'success',
+    				'Socio eliminado correctamente'
+    		);
     	}else{
-    		$data = array('tipoMensaje' => 'error', 'mensaje' => bin2hex("El socio no existe"));
+    		$this->addFlash(
+    				'error',
+    				'El socio que intentas eliminar no existe'
+    		);
     	}
     	
     	
     	
     	
-    	return $this->redirectToRoute('pical_secretaria_socios_index', $data);
+    	return $this->redirectToRoute('pical_secretaria_socios_index');
     	//return $this->redirect($this->generateUrl('pical_secretaria_socios_index', $data));
     }
 }
