@@ -1,0 +1,15 @@
+{% extends 'SecretariaBundle:Default:layout.html.twig' %}
+
+{% block body %}
+	{{ parent() }}
+	
+	    <div class="col-md-12">
+		    	
+			    <img class = "img-responsive" src="{{ asset('public/images/logoPical.gif') }}" />
+		    	
+		    	<h1><p class="text-center"> Bienvenido al sistema de administraci&oacute;n del Club Pical.</p></h1>
+		    	<h2><p class="text-center">Te has identificado como {{ app.user.username }}</p></h2>
+		    	
+	    </div>
+	
+{% endblock %}

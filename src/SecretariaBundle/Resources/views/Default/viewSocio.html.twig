@@ -1,0 +1,120 @@
+{% extends 'SecretariaBundle:Default:layout.html.twig' %}
+
+{% block body %}
+	{{ parent() }}
+	<div class="container well">
+	    <div class="col-md-6">
+	    <h2>Ficha</h2>
+	        <br>
+	        <dl>
+	            <dt>Nombre</dt>
+	            <dd>
+	                {{ socio.nombre }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Apellidos</dt>
+	            <dd>
+	                {{ socio.apellidos }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Email</dt>
+	            <dd>
+	                {{ socio.email }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Direcci&oacute;n</dt>
+	            <dd>
+	                {{ socio.direccion }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Poblaci&oacute;n</dt>
+	            <dd>
+                	{{ socio.poblacion }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Provincia</dt>
+	            <dd>
+                	{{ socio.provincia }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>C&oacute;digo Postal</dt>
+	            <dd>
+	                {{ socio.cp }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>Número de Cuenta</dt>
+	            <dd>
+	                {{ socio.numeroCuenta }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>Fecha de Nacimiento</dt>
+	            <dd>
+	                {{ socio.fechaNacimiento|date("d/m/Y") }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>Escalas</dt>
+	            <dd>
+	                {% for escala in socio.escalas %}
+	                	{{ escala.nombreEscala }} <br>
+	                {% endfor %}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>Tipo de Socio</dt>
+	            <dd>
+	                {% if socio.tipo_socio is defined %}
+	                	socio.tipo_socio
+	                {% else %}
+	                	Tipo no definido
+	                {% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>Alta</dt>
+	            <dd>
+	                {% if socio.alta == true %}
+	                	Dado de Alta
+	                {% else %}
+	                	Dado de Baja
+	                {% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>Infantil</dt>
+	            <dd>
+	                {% if socio.esInfantil == true %}
+	                	Si
+	                {% else %}
+	                	No
+	                {% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+	        </dl>
+	    </div>
+	    <div class="col-md-6">
+	    	<img class="img-responsive" src="{{ asset(socio.webPath) }}">
+	    </div>
+	</div>
+{% endblock %}

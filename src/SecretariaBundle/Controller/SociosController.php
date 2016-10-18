@@ -116,12 +116,8 @@ class SociosController extends Controller
     	
     	$socio = $em->getRepository('SecretariaBundle:Socio')->find($idSocio);
     	
-    	$res = "Usuario: " . $socio->getNombre() . " " . $socio->getPoblacion() . " con escalas : <br>";
     	
-    	foreach($socio->getEscalas() as $escala){
-    		$res .= $escala->getNombreEscala() . "<br>";
-    	}
-    	return new Response($res);
+    	return $this->render('SecretariaBundle:Default:viewSocio.html.twig', array('socio' => $socio));
     	
     	
     }

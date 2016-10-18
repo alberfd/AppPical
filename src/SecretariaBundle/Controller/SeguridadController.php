@@ -29,6 +29,8 @@ class SeguridadController extends Controller
 	}
 	
 	public function homeAction(){
-		return $this->redirectToRoute('pical_secretaria_socios_index');
+		
+		
+		return $this->render('SecretariaBundle:Default:homepage.html.twig');
 	}
 }

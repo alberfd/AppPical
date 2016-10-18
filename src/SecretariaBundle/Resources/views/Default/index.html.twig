@@ -13,10 +13,6 @@
         {{ app.request.get('mensaje')|raw }}
       </div>
     {% endif %}
-    
-    
-    
-    
 
     	<div class="col-md-12">
     	
@@ -78,7 +74,8 @@
                 <td>{{ socio.nombre }}</td>
                 <td>{{ socio.apellidos }}</td>
                 <td>
-                    <a href="{{ path('pical_secretaria_socio_form_edit', {'idSocio': socio.id}) }}" class = "btn btn-sm btn-info">Ver</a>
+                    <a href="{{ path('pical_secretaria_socio_view', {'idSocio': socio.id}) }}" class = "btn btn-sm btn-success">Ver</a>
+                    <a href="{{ path('pical_secretaria_socio_form_edit', {'idSocio': socio.id}) }}" class = "btn btn-sm btn-info">Editar</a>
                     <a href="app_dev.php/../../socio/delete/{{ socio.id }}" class = "btn btn-sm btn-danger">Eliminar</a>
                 </td>
               </tr>
